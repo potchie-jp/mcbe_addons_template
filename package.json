@@ -1,8 +1,8 @@
 {
-    "name": "destroythemall",
+    "name": "minecraft_mcbe_template",
     "version": "1.0.0",
-    "productName": "Destroy Them All: Minecraft Bedrock Add-on",
-    "description": "Destroy Them All: Minecraft Bedrock Add-on",
+    "productName": "minecraft_mcbe_template",
+    "description": "minecraft_mcbe_template",
     "private": true,
     "devDependencies": {
         "@types/gulp": "^4.0.13",
