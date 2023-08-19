@@ -35,5 +35,7 @@
 
 Dev Containerを利用する際はあらかじめ環境変数`WSLENV`に`LOCALAPPDATA/pu`を追加しておいてください。コンテナからWindowsの`LOCALAPPDATA`環境変数を参照し、デプロイ先に指定するために必要な設定となります。
 
+ただし、Windows上にcloneした場合、Dev Containerを利用するとファイルの読み書きのパフォーマンスが著しく低下します。Dev Containerを利用する場合はWSL2のLinuxディストリビューション上にcloneしてください。
+
 ## 開発状況
 ずっと開発中です。
