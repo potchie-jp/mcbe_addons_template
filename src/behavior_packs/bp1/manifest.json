@@ -1,0 +1,25 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "dummy behavior pack 1",
+        "name": "dummy behavior pack 1",
+        "uuid": "00000000-0000-4000-8000-000000000000",
+        "min_engine_version": [1, 20, 10],
+        "version": [1, 0, 0]
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "00000000-0000-4000-8000-000000000001",
+            "version": [1, 0, 0]
+        },
+        {
+            "type": "script",
+            "language": "javascript",
+            "entry": "scripts/main.js",
+            "description": "script",
+            "uuid": "00000000-0000-4000-8000-000000000002",
+            "version": [1, 0, 0]
+        }
+    ]
+}

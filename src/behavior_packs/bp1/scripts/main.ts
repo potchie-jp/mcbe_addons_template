@@ -1,0 +1,1 @@
+console.warn("This is a template add-on for Script API");
