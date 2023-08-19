@@ -21,7 +21,8 @@
 			"extensions": [
 				"BlockceptionLtd.blockceptionvscodeminecraftbedrockdevelopmentextension",
 				"mojang-studios.minecraft-debugger",
-				"netcorext.uuid-generator"
+				"netcorext.uuid-generator",
+				"augustocdias.tasks-shell-input"
 			]
 		}
 	},

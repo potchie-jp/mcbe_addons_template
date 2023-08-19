@@ -4,10 +4,24 @@
         {
             // List the directory names directly under src/behavior_packs in options.
             // src/behavior_packs直下のディレクトリ名をoptionsに列挙します。
-            "options": ["bp1", "bp2"],
+            "options": [
+                "bp1",
+                "bp2"
+            ],
             "description": "Behavior pack to be debugged",
             "type": "pickString",
             "id": "bp_names"
+        },
+        {
+            "id": "bp_names_dyn",
+            "type": "command",
+            "command": "shellCommand.execute",
+            "args":{
+                "command": "node ./bplist.js",
+                "cwd": "${workspaceFolder}",
+                "description": "Behavior pack to be debugged",
+            },
+            
         }
     ],
     "configurations": [
@@ -17,8 +31,8 @@
             "name": "Listen for Minecraft",
             "mode": "listen",
             "localRoot": "${workspaceFolder}/src/behavior_packs",
-            "generatedSourceRoot": "${workspaceFolder}/build/behavior_packs/${input:bp_names}/scripts",
-            "sourceMapRoot": "${workspaceFolder}/build/behavior_packs/${input:bp_names}/scripts",
+            "generatedSourceRoot": "${workspaceFolder}/build/behavior_packs/${input:bp_names_dyn}/scripts",
+            "sourceMapRoot": "${workspaceFolder}/build/behavior_packs/${input:bp_names_dyn}/scripts",
             "host": "localhost",
             "port": 19144
         }
