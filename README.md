@@ -8,5 +8,26 @@
 - ファイルを修正した場合、自動的にトランスパイル等の処理を実行し、development_behavior_packsフォルダおよびdevelopment_resource_packsにデプロイできること
 - 開発完了時にスクリプトファイルをバンドルしてmain.jsファイルにまとめられること
 - Node.jsのモジュールが利用できること
+- Docker環境とWindowsネイティブ環境の両方で利用可能なこと
 
-以下、README作成中。
+## 事前準備
+- 任意の場所にリポジトリをcloneする
+- cloneしたフォルダ名を任意のものに変更する
+- `npm install` 実行
+- `npm run watch`を実行
+- `src/behavior_packs`または`src/resource_packs`フォルダ配下にフォルダを作成し、その中で通常通りアドオンを作成する。
+
+作成したフォルダ１つ１つがアドオンになります。
+
+
+## 使い方
+
+### 共通
+1. リポジトリをクローンする
+1. フォルダ名を任意に変更する
+1. src/behavior_packsまたはsrc/resource_packs配下にディレクトリを作成し、通常通りアドオンを開発する
+
+### for Windows
+
+
+### 共通
