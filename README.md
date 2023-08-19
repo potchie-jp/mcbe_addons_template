@@ -22,10 +22,36 @@
 
 `npm run watch`によりsrcフォルダ配下が監視され、ファイルが変更されるごとにビルドが走り、development_*_packsにデプロイされます。
 
+## デバッグ
+
+### 概要
+`src/behavior_packs`フォルダ配下の各アドオンのうち、一つを選択してデバッグすることができます。
+
+事前に"Minecraft Bedrock Edition Debugger
+"と"Tasks Shell Input"のふたつの拡張機能をインストールしてください。Tasks Shell Inputをインストールすることで、デバッグ実行時にsrc/behavior_packs内のフォルダを自動的にリストアップし選択することができます。
+- [Minecraft Bedrock Edition Debugger
+](https://marketplace.visualstudio.com/items?itemName=mojang-studios.minecraft-debugger)
+- [Tasks Shell Input](https://marketplace.visualstudio.com/items?itemName=augustocdias.tasks-shell-input)
+
+Dev Containerを利用する場合、これらの拡張機能は自動的にインストールされます。
+
+なお、現時点ではBDS用のアドオンのデバッグには対応しておりません。
+
+### デバッグ方法
+「実行とデバッグ」から"Listen for Minecraft"を選択するかF5キーを押下することでビヘイビアーパックを選択するプロンプトが表示されます。
+デバッグしたいビヘイビアーパックを選択してください。
+
+デバッガが起動したら、マインクラフトで`/script debugger connect localhost 19144`コマンドを実行することでデバッガにアタッチできます。
+
+上手く接続できない場合、Windowsの制限によりlocalhostへの接続が制限されている可能性があります。その場合はターミナルで以下のコマンドを入力してloopbackの利用を許可してください。
+- Stable版の場合: `npm run enablemcloopback`
+- Preview版の場合: `npm run enablemcpreviewloopback`
+
 ## パッケージング
 開発完了後に`npm run dist`を実行することで、`dist`フォルダに完成したアドオンが格納されます。圧縮してmcpackやmcaddonにすることで配布も可能です。
 
 `gulpfile.js`の`useBundle`をtrueに設定することで、１ファイルにバンドルされます。
+
 
 ## 注意点
 ビヘイビアーパックのmanifest.jsonに指定するエントリーポイント（entryプロパティ）は必ず`scripts/main.js`としてください。うまくバンドルできなくなります。
