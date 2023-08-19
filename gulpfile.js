@@ -20,9 +20,9 @@ const useMinecraftDedicatedServer = false;
 /** BDSルートディレクトリ */
 const dedicatedServerPath = "/path/to/bds";
 /** Minecraft Preview版のルートディレクトリ */
-const mcPreviewDir = is_windows ? "/AppData/Local/Packages/Microsoft.MinecraftWindowsBeta_8wekyb3d8bbwe/LocalState/games/com.mojang" : "/preview";
+const mcPreviewDir = is_windows ? process.env.LOCALAPPDATA + "/Packages/Microsoft.MinecraftWindowsBeta_8wekyb3d8bbwe/LocalState/games/com.mojang" : "/preview";
 /** Minecraft Stable版のルートディレクトリ */
-const mcStableDir = is_windows ? "/AppData/Local/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang" : "/stable"
+const mcStableDir = is_windows ? process.env.LOCALAPPDATA + "/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang" : "/stable"
 /** Minecraftのルートディレクトリ */
 const mcRoot = useMinecraftDedicatedServer
   ? dedicatedServerPath
