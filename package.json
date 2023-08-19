@@ -27,14 +27,5 @@
         "dist": "gulp dist",
         "watch": "gulp watch",
         "clean": "gulp clean"
-    },
-    "watch": {
-        "deploy": {
-            "patterns": [
-                "src"
-            ],
-            "verbose": true,
-            "delay": 6000
-        }
     }
 }
