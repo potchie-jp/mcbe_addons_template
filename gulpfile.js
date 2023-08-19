@@ -8,6 +8,7 @@ const gulpIgnore = require("gulp-ignore");
 const gulpPlumber = require("gulp-plumber");
 const webpackStream = require("webpack-stream");
 const vinylNamed = require("vinyl-named");
+const gulpIf = require("gulp-if");
 
 const is_windows = process.platform === 'win32'
 const is_mac = process.platform === 'darwin'
@@ -19,6 +20,8 @@ const useMinecraftPreview = true;
 const useMinecraftDedicatedServer = false;
 /** BDSルートディレクトリ */
 const dedicatedServerPath = "/path/to/bds";
+/** アドオンを１ファイルにバンドルする場合はtrueに設定 */
+const useBundle = false;
 /** Minecraft Preview版のルートディレクトリ */
 const mcPreviewDir = is_windows ? process.env.LOCALAPPDATA + "/Packages/Microsoft.MinecraftWindowsBeta_8wekyb3d8bbwe/LocalState/games/com.mojang" : "/preview";
 /** Minecraft Stable版のルートディレクトリ */
@@ -177,7 +180,10 @@ function watchFiles(cb) {
  */
 function distScripts() {
   const buildRoot = "build/behavior_packs";
-  const entryPoints = fs.readdirSync(buildRoot).filter(dir => fs.statSync(path.join(buildRoot, dir)).isDirectory()).map(d => `build/behavior_packs/${d}/scripts/main.js`);
+  const entryPoints =
+    useBundle
+      ? fs.readdirSync(buildRoot).filter(dir => fs.statSync(path.join(buildRoot, dir)).isDirectory()).map(d => `build/behavior_packs/${d}/scripts/main.js`)
+      : fs.readdirSync(buildRoot).filter(dir => fs.statSync(path.join(buildRoot, dir)).isDirectory()).map(d => `build/behavior_packs/${d}/scripts/*.js`);
   return gulp
     .src(entryPoints, { base: "build/behavior_packs" })
     .pipe(gulpPlumber())
@@ -186,7 +192,7 @@ function distScripts() {
       return ((p.dir) ? p.dir + path.sep : '') + p.name;
     })
     )
-    .pipe(webpackStream(require("./webpack.config.js")))
+    .pipe(gulpIf(useBundle,webpackStream(require("./webpack.config.js"))))
     .pipe(gulp.dest("dist/behavior_packs", {
       overwrite: true,
     }));
